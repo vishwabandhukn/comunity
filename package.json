@@ -4,10 +4,16 @@
   "main": "index.js",
   "scripts": {
     "build": "npm install --prefix backend && npm install --prefix frontend && npm run build --prefix frontend",
-    "start": "npm run start --prefix backend"
+    "start": "npm run start --prefix backend",
+    "dev": "concurrently -k -n backend,frontend -c blue,green \"npm:backend-dev\" \"npm:frontend-dev\"",
+    "backend-dev": "npm run dev --prefix backend",
+    "frontend-dev": "npm run dev --prefix frontend"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "description": ""
+  "description": "",
+  "devDependencies": {
+    "concurrently": "^9.0.1"
+  }
 }
